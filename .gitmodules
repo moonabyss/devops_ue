@@ -1,0 +1,9 @@
+[submodule "docs/Doxygen-Flat-Theme"]
+	path = docs/Doxygen-Flat-Theme
+	url = https://github.com/moonabyss/Doxygen-Flat-Theme.git
+[submodule "docs/Doxygen-Dark-Theme"]
+	path = docs/Doxygen-Dark-Theme
+	url = https://github.com/moonabyss/Doxygen-Dark-Theme.git
+[submodule "docs/UE-Doxygen-Filter"]
+	path = docs/UE-Doxygen-Filter
+	url = https://github.com/moonabyss/UE-Doxygen-Filter.git
