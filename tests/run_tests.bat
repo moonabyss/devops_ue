@@ -8,7 +8,7 @@ set Before=public bool UnoptimizedCode = false;
 set After=public bool UnoptimizedCode = true;
 set File=%SourceCodePath%\%ProjectPureName%Editor.Target.cs
 
-powershell -Command "(gc %File%) -replace '%Before%', '%After%' | Out-File %File%"
+powershell -Command "(gc '%File%') -replace '%Before%', '%After%' | Out-File '%File%'"
 
 rem build sources
 call "%RunUATPath%" BuildCookRun ^
@@ -34,7 +34,7 @@ set Sources=%RETVAL%
 call :NORMALIZEPATH %ExludedPathForTestReport%
 set ExludedSources=%RETVAL%
 
-"%OpenCPPCoveragePath%" --modules="%ProjectRoot%" --sources="%SourceCodePath%" ^
+"%OpenCPPCoveragePath%" --modules="%Module%" --sources="%Sources%" ^
 --excluded_sources="%ExludedSources%" --export_type="%ExportType%" -v -- %TestRunner%
 
 rem clean obsolete artifacts
