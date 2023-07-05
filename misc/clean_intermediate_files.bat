@@ -12,3 +12,9 @@ FOR %%f IN (%FilesToRemove%) DO (
     del /q %%f
 )
 popd
+
+pushd %PluginsPath%
+FOR %%f IN (%DirsToRemove%) DO (
+    rmdir /s /q %%f
+)
+popd
