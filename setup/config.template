@@ -20,6 +20,7 @@ set ProjectPureName=<ProjectName>
 set ProjectName=%ProjectPureName%.uproject
 set ProjectPath=%ProjectRoot%\%ProjectName%
 set SourceCodePath=%ProjectRoot%\Source
+set PluginsPath=%ProjectRoot%\Plugins
 
 rem Build params
 set Platform=Win64
