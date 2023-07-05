@@ -7,3 +7,8 @@ FOR /R "%SourceCodePath%" %%f IN (*.cpp, *.h, *.cs) DO (
 	clang-format -i "%%~f"
 	echo %%f
 )
+
+FOR /R "%PluginsPath%" %%f IN (*.cpp, *.h, *.cs) DO (
+	clang-format -i "%%~f"
+	echo %%f
+)
