@@ -4,6 +4,8 @@
 call "%~dp0..\..\devops_data\config.bat"
 
 rmdir /s /q "%ArchivePath%\Windows"
+mkdir "%ArchivePath%"
+copy /y "..\Misc\zip_game.bat" "%ArchivePath%"
 
 "%RunUATPath%" BuildCookRun ^
 -project="%ProjectPath%" ^
@@ -11,5 +13,3 @@ rmdir /s /q "%ArchivePath%\Windows"
 -clientconfig="%Configuration%" ^
 -archivedirectory="%ArchivePath%" ^
 -build -cook -package -stage -archive -pak -allmaps
-
-copy /y "..\Misc\zip_game.bat" "%ArchivePath%

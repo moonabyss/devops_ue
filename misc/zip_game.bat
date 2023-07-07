@@ -4,4 +4,4 @@
 call "%~dp0..\devops_data\config.bat"
 
 del %ProjectPureName%.rar
-%RarPath% a %ProjectPureName%.rar Windows
+"%RarPath%" a %ProjectPureName%.rar Windows
