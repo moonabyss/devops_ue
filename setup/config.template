@@ -49,3 +49,6 @@ set ReportOutputPath=%ProjectRoot%\Build\Tests
 set ExludedPathForTestReport=%SourceCodePath%\%ProjectPureName%\Tests
 set UEAutomationContentPath=%EnginePath%\Engine\Content\Automation
 set OpenCPPCoveragePath=c:\Program Files\OpenCppCoverage\OpenCppCoverage.exe
+
+rem Misc
+set RarPath=C:\Program Files\WinRAR\Rar.exe
