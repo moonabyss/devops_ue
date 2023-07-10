@@ -3,9 +3,9 @@
 
 call "%~dp0..\..\devops_data\config.bat"
 
-rmdir /s /q "%ArchivePath%\Windows"
-mkdir "%ArchivePath%"
-copy /y "..\Misc\zip_game.bat" "%ArchivePath%"
+call rmdir /s /q "%ArchivePath%\Windows"
+call mkdir "%ArchivePath%"
+call copy /y "%~dp0..\misc\zip_game.bat" "%ProjectRoot%\Build"
 
 "%RunUATPath%" BuildCookRun ^
 -project="%ProjectPath%" ^
