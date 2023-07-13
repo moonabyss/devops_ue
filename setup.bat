@@ -16,6 +16,7 @@ copy "%~dp0setup\.clang-format.template" "%~dp0..\devops_data\.clang-format"
 copy "%~dp0setup\.gitignore.template" "%~dp0..\devops_data\.gitignore"
 copy "%~dp0setup\LICENSE.template" "%~dp0..\devops_data\LICENSE.md"
 copy "%~dp0setup\Doxyfile.template" "%~dp0..\devops_data\Doxyfile"
+copy "%~dp0setup\run_2_game.template" "%~dp0..\devops_data\run_2_game.bat"
 
 echo All files were copied to "%~dp0..\devops_data"
 pause
