@@ -24,7 +24,7 @@ set PluginsPath=%ProjectRoot%\Plugins
 
 rem Build params
 set Platform=Win64
-:: Shipping, DebugGame
+:: Shipping, Development, DebugGame
 set Configuration=Development
 set ArchivePath=%ProjectRoot%\Build
 
@@ -51,4 +51,4 @@ set UEAutomationContentPath=%EnginePath%\Engine\Content\Automation
 set OpenCPPCoveragePath=c:\Program Files\OpenCppCoverage\OpenCppCoverage.exe
 
 rem Misc
-set RarPath=C:\Program Files\WinRAR\Rar.exe
+set RarPath=C:\Program Files\WinRAR\WinRar.exe

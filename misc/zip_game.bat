@@ -3,5 +3,5 @@
 
 call "%~dp0..\devops_data\config.bat"
 
-del %ProjectPureName%.rar
-"%RarPath%" a %ProjectPureName%.rar Windows
+del %ProjectPureName%.zip
+"%RarPath%" a -afzip %ProjectPureName%.zip Windows
