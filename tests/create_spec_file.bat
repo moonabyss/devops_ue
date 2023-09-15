@@ -22,7 +22,7 @@ echo =========== File to be created: ===========
 echo %TestCppFilePath%
 echo ======================================
 echo.
-set /p UserConfirmed= "Confirm? [Y/N or (E)xit] :" 
+set /p UserConfirmed= "Confirm? [Y/N or (E)xit]: " 
 if %UserConfirmed% == N goto:begin
 if %UserConfirmed% == n goto:begin
 if %UserConfirmed% == E goto:EOF
