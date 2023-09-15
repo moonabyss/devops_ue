@@ -4,9 +4,9 @@
 call "%~dp0..\..\devops_data\config.bat"
 
 :begin
-set /p TestClassName= "Enter test class name (without word 'Test' in the name) :"
+set /p TestClassName= "Enter test class name (without word 'Test' in the name): "
 if [%TestClassName%]==[] goto:begin
-set /p TestRelativePath= "Enter relative to [Source\%ProjectPureName%] directory (use \ symbol for subdirs):"
+set /p TestRelativePath= "Enter relative to [Source\%ProjectPureName%] directory (use \ symbol for subdirs): "
 
 rem '.spec.cpp' file name
 set TestCppFileName=%TestClassName%.spec.cpp
