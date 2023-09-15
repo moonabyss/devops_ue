@@ -65,7 +65,7 @@ void CallFuncByNameWithParams(UObject* Object, const FString& FuncName, const TA
 class FUntilLatentCommand : public IAutomationLatentCommand
 {
 public:
-    FTPSUntilLatentCommand(TFunction<void()> InCallback, TFunction<void()> InTimeoutCallback, float InTimeout = 5.0f);
+    FUntilLatentCommand(TFunction<void()> InCallback, TFunction<void()> InTimeoutCallback, float InTimeout = 5.0f);
     virtual bool Update() override;
 
 private:
