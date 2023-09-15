@@ -1,6 +1,6 @@
 // My game copyright
 
-#include "<Path>/Utils/JsonUtils.h"
+#include "<Path>/Tests/Utils/JsonUtils.h"
 #include "Dom/JsonObject.h"
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonReader.h"
@@ -9,7 +9,7 @@
 
 DEFINE_LOG_CATEGORY_STATIC(LogJsonUtils, All, All);
 
-using namespace TPS::Test;
+using namespace Moonabyss::Test;
 
 bool JsonUtils::WriteInputData(const FString& FileName, const FInputData& InputData)
 {
