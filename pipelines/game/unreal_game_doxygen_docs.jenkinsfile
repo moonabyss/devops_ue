@@ -19,7 +19,7 @@ pipeline {
         GIT_BRANCH_GAME = 'master'
         SLACK_CHANNEL = 'tps-game-builds'
         DOXYGEN_PATH = 'doxygen'
-        DOXYFILE_PATH = "$BUILD_DIR\\devops\\docs\\Doxyfile"
+        DOXYFILE_PATH = "$BUILD_DIR\\devops_data\\Doxyfile"
         DOCS_DIR = 'Documentation\html'
     }*/
 

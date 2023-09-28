@@ -15,17 +15,18 @@ pipeline {
 
     environment {
         /*
+        BUILD_DIR = 'e:\\JenkinsJobs\\game-test-runner-pipeline'
         GIT_URL_GAME = 'https://github.com/moonabyss/UnrealTPSGame'
         GIT_CREDENTIALS_GAME = 'moonabyss-github'
         GIT_BRANCH_GAME = 'master'
-        UAT_PATH = 'f:\\Builds\\UE_5.0_InstalledBuild\\Engine\\Build\\BatchFiles\\RunUAT.bat'
-        PROJECT_PATH = "$BUILD_DIR\\TPS.uproject"
+        UAT_PATH = 'f:\\Epic Games\\UE Binary\\UE_5.1\\Engine\\Build\\BatchFiles\\RunUAT.bat'
+        PROJECT_PATH = "$BUILD_DIR\\GAME.uproject"
         PLATFORM = 'Win64'
-        BUILD_FLAGS = '-build -cook -ubtargs="-UnoptimizedCode'
+        BUILD_FLAGS = '-build -cook -ubtargs="-UnoptimizedCode"'
         SLACK_CHANNEL = 'tps-game-builds'
         CONFIG = 'Development' //['Development', 'Shipping', 'DebugGame']
         PLATFORM = 'Win64'
-        EDITOR_PATH = 'f:\\Builds\\UE_5.0_InstalledBuild\\Engine\\Binaries\\Win64\\UnrealEditor.exe'
+        EDITOR_PATH = 'f:\\Epic Games\\UE Binary\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor.exe'
         TEST_NAMES = 'TPSGame'
         TEST_OUTPUT_PATH = "$BUILD_DIR\\Build\\Tests"
         EDITOR_FLAGS = '-stdout -nosplash -nullRHI'
@@ -33,7 +34,7 @@ pipeline {
         OPEN_CPP_COVERAGE_PATH = 'c:\\Program Files\\OpenCppCoverage\\OpenCppCoverage.exe'
         SOURCE_CODE_PATH = "$BUILD_DIR\\Source"
         EXCLUDED_SOURCES = "$BUILD_DIR\\Source\\TPS\\Tests"
-        PROJECT_PURE_NAME = 'TPS'
+        PROJECT_PURE_NAME = 'GAME'
         UNOPTIMIZED_BUILD = false
         TEST_EXTRA_CMD = 'SetPriority Critical;'
         */
@@ -101,7 +102,7 @@ pipeline {
         }
         stage('Publish test results') {
             environment {
-                CONVERTER_PATH = "$BUILD_DIR\\devops\\tests\\ue_report_to_junit.py"
+                CONVERTER_PATH = "$BUILD_DIR\\devops_ue\\tests\\ue_report_to_junit.py"
                 UE_TESTS_PATH = "$BUILD_DIR\\Build\\Tests\\index.json"
                 JUNIT_TESTS_PATH = "$BUILD_DIR\\Build\\Tests\\index.xml"
                 CODE_COVERAGE_PATH = "$BUILD_DIR\\Build\\Tests\\Coverage.xml"
