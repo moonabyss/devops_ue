@@ -7,7 +7,7 @@
 :: *************************** !! IMPORTANT !! ***************************
 
 rem Engine params
-set EnginePath=c:\Builds\UE_5.0_InstalledBuild
+set EnginePath=c:\Builds\UE_5.1
 set VersionSelector=c:\Program Files (x86)\Epic Games\Launcher\Engine\Binaries\Win64\UnrealVersionSelector.exe
 rem Editor path
 set EditorPath=%EnginePath%\Engine\Binaries\Win64\UnrealEditor.exe
@@ -20,7 +20,6 @@ set ProjectPureName=<ProjectName>
 set ProjectName=%ProjectPureName%.uproject
 set ProjectPath=%ProjectRoot%\%ProjectName%
 set SourceCodePath=%ProjectRoot%\Source
-set PluginsPath=%ProjectRoot%\Plugins
 
 rem Build params
 set Platform=Win64
