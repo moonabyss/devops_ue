@@ -111,11 +111,13 @@ pipeline {
                 CONVERTER_PATH = "$BUILD_DIR\\devops_ue\\tests\\ue_report_to_junit.py"
                 UE_TESTS_PATH = "$BUILD_DIR\\Build\\Tests\\index.json"
                 JUNIT_TESTS_PATH = "$BUILD_DIR\\Build\\Tests\\index.xml"
+                COBERTURA_PATCHER_PATH="$BUILD_DIR\\devops_ue\\tests\\cobertura_report_patcher.py"
                 CODE_COVERAGE_PATH = "$BUILD_DIR\\Build\\Tests\\Coverage.xml"
             }
             steps {
                 bat '''
                     "%CONVERTER_PATH%" -ue_report_path="%UE_TESTS_PATH%" -junit_xml_path="%JUNIT_TESTS_PATH%"
+                     "%COBERTURA_PATCHER_PATH%" -cobertura_report_path="%CODE_COVERAGE_PATH%"
                 '''
                 junit 'Build\\Tests\\index.xml'
                 cobertura coberturaReportFile: 'Build\\Tests\\Coverage.xml', onlyStable: false
