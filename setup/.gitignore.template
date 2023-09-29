@@ -84,6 +84,4 @@ Content/StarterContent/*
 *.code-workspace
 .idea/
 
-devops/tests/data/
-devops/jenkins/
 Documentation/
