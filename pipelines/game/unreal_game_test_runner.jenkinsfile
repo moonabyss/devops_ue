@@ -25,8 +25,8 @@ pipeline {
         PLATFORM = 'Win64'
         BUILD_FLAGS = '-build -cook -ubtargs="-UnoptimizedCode"'
         SLACK_CHANNEL = 'tps-game-builds'
-        CONFIG = 'Development' //['Development', 'Shipping', 'DebugGame']
-        PLATFORM = 'Win64'
+        CONFIG = 'Development' // ['Development', 'Shipping', 'DebugGame']
+        PLATFORM = 'Win64' // ['Android', 'Linux'..]
         EDITOR_PATH = 'f:\\Epic Games\\UE Binary\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor.exe'
         TEST_NAMES = 'TPSGame'
         TEST_OUTPUT_PATH = "$BUILD_DIR\\Build\\Tests"
