@@ -20,14 +20,13 @@ pipeline {
         GIT_CREDENTIALS_GAME = 'moonabyss-github'
         GIT_BRANCH_GAME = 'master'
         GIT_CLONE_TIMEOUT_MIN = 60
-        UAT_PATH = 'f:\\Epic Games\\UE Binary\\UE_5.1\\Engine\\Build\\BatchFiles\\RunUAT.bat'
+        UAT_PATH = 'f:\\EpicGames\\Binary\\UE_5.1\\Engine\\Build\\BatchFiles\\RunUAT.bat'
         PROJECT_PATH = "$BUILD_DIR\\GAME.uproject"
-        PLATFORM = 'Win64'
         BUILD_FLAGS = '-build -cook -ubtargs="-UnoptimizedCode"'
         SLACK_CHANNEL = 'tps-game-builds'
         CONFIG = 'Development' // ['Development', 'Shipping', 'DebugGame']
         PLATFORM = 'Win64' // ['Android', 'Linux'..]
-        EDITOR_PATH = 'f:\\Epic Games\\UE Binary\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor.exe'
+        EDITOR_PATH = 'f:\\EpicGames\\Binary\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor.exe'
         TEST_NAMES = 'TPSGame'
         TEST_OUTPUT_PATH = "$BUILD_DIR\\Build\\Tests"
         EDITOR_FLAGS = '-stdout -nosplash -nullRHI'

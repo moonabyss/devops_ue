@@ -19,7 +19,7 @@ pipeline {
         GIT_CREDENTIALS_GAME = 'moonabyss-github'
         GIT_BRANCH_GAME = 'master'
         GIT_CLONE_TIMEOUT_MIN = 60
-        UAT_PATH = 'f:\\Epic Games\\UE Binary\\UE_5.1\\Engine\\Build\\BatchFiles\\RunUAT.bat'
+        UAT_PATH = 'f:\\EpicGames\\Binary\\UE_5.1\\Engine\\Build\\BatchFiles\\RunUAT.bat'
         PROJECT_PATH = "$BUILD_DIR\\GAME.uproject"
         PLATFORM = 'Win64' // ['Android', 'Linux'..]
         // ARCHIVE_PATH = "e:\\JenkinsJobs\\Artifacts\\$JOB_NAME\\$BUILD_NUMBER"
@@ -28,7 +28,6 @@ pipeline {
         ZIP_DIR = "Build\\**\\*.*"
         SLACK_CHANNEL = 'tps-game-builds'
         CONFIG = 'Development' // ['Development', 'Shipping', 'DebugGame']
-        PLATFORM = 'Win64'
     }*/
 
     stages {
