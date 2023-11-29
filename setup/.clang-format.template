@@ -19,7 +19,7 @@ AllowShortLambdasOnASingleLine: Inline
 IndentCaseLabels: true
 AlignAfterOpenBracket: DontAlign
 AllowAllArgumentsOnNextLine: true
-PointerAlignment: Left
+PointerAlignment: Right
 SpacesBeforeTrailingComments: 2
 AlignEscapedNewlines: Left
 SpaceAfterLogicalNot: false
