@@ -14,12 +14,14 @@ pipeline {
     }
 
     /*environment {
+        BUILD_DIR = 'e:\\JenkinsJobs\\game-docs-pipeline'
         GIT_URL_GAME = 'https://github.com/moonabyss/UnrealTPSGame'
         GIT_CREDENTIALS_GAME = 'moonabyss-github'
         GIT_BRANCH_GAME = 'master'
+        GIT_CLONE_TIMEOUT_MIN = 60
         SLACK_CHANNEL = 'tps-game-builds'
         DOXYGEN_PATH = 'doxygen'
-        DOXYFILE_PATH = "$BUILD_DIR\\devops\\docs\\Doxyfile"
+        DOXYFILE_PATH = "$BUILD_DIR\\devops_data\\Doxyfile"
         DOCS_DIR = 'Documentation\html'
     }*/
 
@@ -32,9 +34,11 @@ pipeline {
 
                 checkout scmGit(branches: [[name: "$GIT_BRANCH_GAME"]], 
                 extensions: [
-                    cleanBeforeCheckout(),
-                    submodule(recursiveSubmodules: true, disableSubmodules: false)
-                ], 
+                    [$class: 'CleanBeforeCheckout'],
+                    [$class: 'SubmoduleOption', disableSubmodules: false, recursiveSubmodules: true],
+                    [$class: 'CloneOption', timeout: "$GIT_CLONE_TIMEOUT_MIN"],
+                    [$class: 'CheckoutOption', timeout: "$GIT_CLONE_TIMEOUT_MIN"]
+                ],
                 userRemoteConfigs: [[credentialsId: "$GIT_CREDENTIALS_GAME", 
                 url: "$GIT_URL_GAME"]])
             }

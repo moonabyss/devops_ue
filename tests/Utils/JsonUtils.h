@@ -2,10 +2,10 @@
 
 #pragma once
 
-#include "<Path>/Utils/InputRecordingUtils.h"
+#include "<Path>/Tests/Utils/InputRecordingUtils.h"
 #include "CoreMinimal.h"
 
-namespace TPS
+namespace Moonabyss
 {
 namespace Test
 {
@@ -18,4 +18,4 @@ public:
 };
 
 }  // namespace Test
-}  // namespace TPS
+}  // namespace Moonabyss

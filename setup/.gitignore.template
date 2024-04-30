@@ -1,7 +1,6 @@
-# Visual Studio 2015 user specific files
+# Visual Studio files
 .vs/
-
-# Visual Studio 2015 database file
+.vsconfig
 *.VC.db
 
 # Compiled Object files
@@ -84,6 +83,4 @@ Content/StarterContent/*
 *.code-workspace
 .idea/
 
-devops/tests/data/
-devops/jenkins/
 Documentation/

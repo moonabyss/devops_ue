@@ -2,14 +2,13 @@ BasedOnStyle: Microsoft
 IndentWidth: '4'
 UseTab: Never
 TabWidth: '4'
-#BreakBeforeBraces: Allman
 BreakBeforeBraces: Custom
 BraceWrapping:
-  SplitEmptyFunction: true
+  SplitEmptyFunction: false
   AfterClass: true
   AfterCaseLabel: true
   BeforeLambdaBody: true
-ColumnLimit: '140'
+ColumnLimit: '200'
 AccessModifierOffset: '-4'
 SortIncludes: true
 AllowShortBlocksOnASingleLine: Empty
@@ -18,13 +17,20 @@ AllowShortFunctionsOnASingleLine: Inline
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortLambdasOnASingleLine: Inline
 IndentCaseLabels: true
-AlignAfterOpenBracket: DontAlign
+AlignAfterOpenBracket: Align
 AllowAllArgumentsOnNextLine: true
 PointerAlignment: Left
 SpacesBeforeTrailingComments: 2
 AlignEscapedNewlines: Left
 SpaceAfterLogicalNot: false
-SpaceAfterCStyleCast: true
 AlwaysBreakTemplateDeclarations: Yes
 BreakConstructorInitializers: BeforeComma
-NamespaceIndentation: All
+NamespaceIndentation: None
+InsertNewlineAtEOF: true
+SpaceAfterCStyleCast: false
+AlignArrayOfStructures: Right
+ShortNamespaceLines: 0
+EmptyLineBeforeAccessModifier: Always
+AlignOperands: AlignAfterOperator
+BreakBeforeTernaryOperators: true
+KeepEmptyLinesAtTheStartOfBlocks: false

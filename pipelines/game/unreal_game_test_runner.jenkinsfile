@@ -15,17 +15,18 @@ pipeline {
 
     environment {
         /*
+        BUILD_DIR = 'e:\\JenkinsJobs\\game-test-runner-pipeline'
         GIT_URL_GAME = 'https://github.com/moonabyss/UnrealTPSGame'
         GIT_CREDENTIALS_GAME = 'moonabyss-github'
         GIT_BRANCH_GAME = 'master'
-        UAT_PATH = 'f:\\Builds\\UE_5.0_InstalledBuild\\Engine\\Build\\BatchFiles\\RunUAT.bat'
-        PROJECT_PATH = "$BUILD_DIR\\TPS.uproject"
-        PLATFORM = 'Win64'
-        BUILD_FLAGS = '-build -cook -ubtargs="-UnoptimizedCode'
+        GIT_CLONE_TIMEOUT_MIN = 60
+        UAT_PATH = 'f:\\EpicGames\\Binary\\UE_5.1\\Engine\\Build\\BatchFiles\\RunUAT.bat'
+        PROJECT_PATH = "$BUILD_DIR\\GAME.uproject"
+        BUILD_FLAGS = '-build -cook -ubtargs="-UnoptimizedCode"'
         SLACK_CHANNEL = 'tps-game-builds'
-        CONFIG = 'Development' //['Development', 'Shipping', 'DebugGame']
-        PLATFORM = 'Win64'
-        EDITOR_PATH = 'f:\\Builds\\UE_5.0_InstalledBuild\\Engine\\Binaries\\Win64\\UnrealEditor.exe'
+        CONFIG = 'Development' // ['Development', 'Shipping', 'DebugGame']
+        PLATFORM = 'Win64' // ['Android', 'Linux'..]
+        EDITOR_PATH = 'f:\\EpicGames\\Binary\\UE_5.1\\Engine\\Binaries\\Win64\\UnrealEditor.exe'
         TEST_NAMES = 'TPSGame'
         TEST_OUTPUT_PATH = "$BUILD_DIR\\Build\\Tests"
         EDITOR_FLAGS = '-stdout -nosplash -nullRHI'
@@ -33,7 +34,7 @@ pipeline {
         OPEN_CPP_COVERAGE_PATH = 'c:\\Program Files\\OpenCppCoverage\\OpenCppCoverage.exe'
         SOURCE_CODE_PATH = "$BUILD_DIR\\Source"
         EXCLUDED_SOURCES = "$BUILD_DIR\\Source\\TPS\\Tests"
-        PROJECT_PURE_NAME = 'TPS'
+        PROJECT_PURE_NAME = 'GAME'
         UNOPTIMIZED_BUILD = false
         TEST_EXTRA_CMD = 'SetPriority Critical;'
         */
@@ -50,7 +51,12 @@ pipeline {
                     message: "Build STARTED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 
                 checkout scmGit(branches: [[name: "$GIT_BRANCH_GAME"]], 
-                extensions: [cleanBeforeCheckout()], 
+                extensions: [
+                    [$class: 'CleanBeforeCheckout'],
+                    [$class: 'SubmoduleOption', disableSubmodules: false, recursiveSubmodules: true],
+                    [$class: 'CloneOption', timeout: "$GIT_CLONE_TIMEOUT_MIN"],
+                    [$class: 'CheckoutOption', timeout: "$GIT_CLONE_TIMEOUT_MIN"]
+                ],
                 userRemoteConfigs: [[credentialsId: "$GIT_CREDENTIALS_GAME", 
                 url: "$GIT_URL_GAME"]])
             }
@@ -90,7 +96,7 @@ pipeline {
             steps {
                 bat '''
                     set TEST_RUNNER="%EDITOR_PATH%" "%PROJECT_PATH%" -ExecCmds="Automation %TEST_EXTRA_CMD%RunTests %TEST_NAMES%;Quit" ^
-                    -ReportOutputPath="%TEST_OUTPUT_PATH%" %EDITOR_FLAGS%
+                    -ReportExportPath="%TEST_OUTPUT_PATH%" %EDITOR_FLAGS%
 
                     "%OPEN_CPP_COVERAGE_PATH%" --modules="%BUILD_DIR%" --sources="%SOURCE_CODE_PATH%" ^
                     --excluded_sources="%EXCLUDED_SOURCES%" --export_type="%CODE_COVERAGE_EXPORT_TYPE%" -- %TEST_RUNNER%
@@ -101,14 +107,16 @@ pipeline {
         }
         stage('Publish test results') {
             environment {
-                CONVERTER_PATH = "$BUILD_DIR\\devops\\tests\\ue_report_to_junit.py"
+                CONVERTER_PATH = "$BUILD_DIR\\devops_ue\\tests\\ue_report_to_junit.py"
                 UE_TESTS_PATH = "$BUILD_DIR\\Build\\Tests\\index.json"
                 JUNIT_TESTS_PATH = "$BUILD_DIR\\Build\\Tests\\index.xml"
+                COBERTURA_PATCHER_PATH="$BUILD_DIR\\devops_ue\\tests\\cobertura_report_patcher.py"
                 CODE_COVERAGE_PATH = "$BUILD_DIR\\Build\\Tests\\Coverage.xml"
             }
             steps {
                 bat '''
                     "%CONVERTER_PATH%" -ue_report_path="%UE_TESTS_PATH%" -junit_xml_path="%JUNIT_TESTS_PATH%"
+                     "%COBERTURA_PATCHER_PATH%" -cobertura_report_path="%CODE_COVERAGE_PATH%"
                 '''
                 junit 'Build\\Tests\\index.xml'
                 cobertura coberturaReportFile: 'Build\\Tests\\Coverage.xml', onlyStable: false

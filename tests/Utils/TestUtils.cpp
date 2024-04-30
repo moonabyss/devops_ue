@@ -1,11 +1,11 @@
 #if WITH_AUTOMATION_TESTS
 
-#include "<Path>/Utils/TestUtils.h"
+#include "<Path>/Tests/Utils/TestUtils.h"
 #include "Misc/OutputDeviceNull.h"
 #include "AutomationBlueprintFunctionLibrary.h"
 #include "BufferVisualizationData.h"
 
-namespace LifeExe
+namespace Moonabyss
 {
 namespace Test
 {
@@ -37,12 +37,12 @@ void CallFuncByNameWithParams(UObject* Object, const FString& FuncName, const TA
     Object->CallFunctionByNameWithArguments(*Command, OutputDeviceNull, nullptr, true);
 }
 
-FTPSUntilLatentCommand::FTPSUntilLatentCommand(TFunction<void()> InCallback, TFunction<void()> InTimeoutCallback, float InTimeout)
+FUntilLatentCommand::FUntilLatentCommand(TFunction<void()> InCallback, TFunction<void()> InTimeoutCallback, float InTimeout)
     : Callback(MoveTemp(InCallback)), TimeoutCallback(MoveTemp(InTimeoutCallback)), Timeout(InTimeout)
 {
 }
 
-bool FTPSUntilLatentCommand::Update()
+bool FUntilLatentCommand::Update()
 {
     const double NewTime = FPlatformTime::Seconds();
     if (NewTime - StartTime >= Timeout)
@@ -211,6 +211,6 @@ void SpecCloseLevel(UWorld* World)
 }
 
 }  // namespace Test
-}  // namespace TPS
+}  // namespace Moonabyss
 
 #endif

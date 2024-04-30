@@ -1,6 +1,6 @@
 @echo off
 
-call "%~dp0\..\config.bat"
+call "%~dp0..\config.bat"
 
 rem copy minimal editor settings
 mkdir "Saved\Config\WindowsEditor"
